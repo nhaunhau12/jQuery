@@ -8,157 +8,160 @@
     </head>
     <body>
         <form id="myform">
-            <input type="text" value="" size="20" id="number"/>
+            <input type="text" value="" size="20" id="number" />
             <br/><br/>
-            <button type="button" onclick='phantram()' id="number">%</button>
-            <button type="button" onclick='canbachai()' id="number">&radic;</button>
-            <button type="button" onclick='binhphuong()' id="number">x<sup>2</sup></button>
-            <button type="button" onclick='doiso()' id="number"><sup>1</sup>/<sub>x</sub></button>
+            <button type="button" class="phantram">%</button>
+            <button type="button" class="canbachai">&radic;</button>
+            <button type="button" class="binhphuong">x<sup>2</sup></button>
+            <button type="button" class="doiso"><sup>1</sup>/<sub>x</sub></button>
             <br/><br/>
-            <button type="button" onclick='number7()' id="number">7</button>
-            <button type="button" onclick='number8()' id="number">8</button>
-            <button type="button" onclick='number9()' id="number">9</button>
-            <button type="button" onclick='chia()' id="number">/</button>
+            <button type="button" class="number7">7</button>
+            <button type="button" class="number8">8</button>
+            <button type="button" class="number9">9</button>
+            <button type="button" class="chia">/</button>
             <br/><br/>
-            <button type="button" onclick='number4()' id="number">4</button>
-            <button type="button" onclick='number5()' id="number">5</button>
-            <button type="button" onclick='number6()' id="number">6</button>
-            <button type="button" onclick='nhan()' id="number">*</button>
+            <button type="button" class="number4">4</button>
+            <button type="button" class="number5">5</button>
+            <button type="button" class="number6">6</button>
+            <button type="button" class="nhan">*</button>
             <br/><br/>
-            <button type="button" onclick='number1()' id="number">1</button>
-            <button type="button" onclick='number2()' id="number">2</button>
-            <button type="button" onclick='number3()' id="number">3</button>
-            <button type="button" onclick='tru()' id="number">-</button>
+            <button type="button" class="number1">1</button>
+            <button type="button" class="number2">2</button>
+            <button type="button" class="number3">3</button>
+            <button type="button" class="tru">-</button>
             <br/><br/>
-            <button type="button" onclick='sodoi()' id="number">&plusmn;</button>
-            <button type="button" onclick='number0()' id="number">0</button>
-            <button type="button" onclick='daucham()' id="number">.</button>
-            <button type="button" onclick='cong()' id="number">+</button>
+            <button type="button" class="sodoi">&plusmn;</button>
+            <button type="button" class="number0">0</button>
+            <button type="button" class="daucham">.</button>
+            <button type="button" class="cong">+</button>
             <br/><br/>
-            <button type="button" onclick='reset()' id="number">C</button>
-            <button class="zero" type="button" onclick='dapso()' id="number">=</button>
+            <button type="button" class="reset">C</button>
+            <button class="dapso" type="button">=</button>
             <br/><br/>
-            <button type="button" onclick='changetheme()' id="number">Change theme</button>
+            <button type="button" class="changetheme">Change theme</button>
         </form>
+
+        <script src="jquery/jquery-2.2.0.min.js" type="text/javascript"></script>
+
         <script>
 
-            function number1() {
-                document.getElementById('number').value += '1';
+            $('.number1').click(function () {
+                setValueClick('1');
+            });
+            $('.number2').click(function () {
+                setValueClick('2');
+            });
+            $('.number3').click(function () {
+                setValueClick('3');
+            });
+            $('.number4').click(function () {
+                setValueClick('4');
+            });
+            $('.number5').click(function () {
+                setValueClick('5');
+            });
+            $('.number6').click(function () {
+                setValueClick('6');
+            });
+            $('.number7').click(function () {
+                setValueClick('7');
+            });
+            $('.number8').click(function () {
+                setValueClick('8');
+            });
+            $('.number9').click(function () {
+                setValueClick('9');
+            });
+            $('.number0').click(function () {
+                setValueClick('0');
+            });
+
+            function setValueClick(key) {
+                var str = $('#number').val();
+                $('#number').val(str + key);
             }
-            function number2() {
-                document.getElementById('number').value += '2';
-            }
-            function number3() {
-                document.getElementById('number').value += '3';
-            }
-            function number4() {
-                document.getElementById('number').value += '4';
-            }
-            function number5() {
-                document.getElementById('number').value += '5';
-            }
-            function number6() {
-                document.getElementById('number').value += '6';
-            }
-            function number7() {
-                document.getElementById('number').value += '7';
-            }
-            function number8() {
-                document.getElementById('number').value += '8';
-            }
-            function number9() {
-                document.getElementById('number').value += '9';
-            }
-            function number0() {
-                document.getElementById('number').value += '0';
-            }
-            function phantram() {
-                var str = document.getElementById('number').value;
+
+            $('.phantram').click(function () {
+                var str = $('#number').val();//var str = document.getElementById('number').value;
                 if (!isNaN(str)) {
                     var x = eval(str / 100);
-                    document.getElementById('number').value = x;
+                    $('#number').val(x);
                 } else {
                     alert('Đây không phải là số');
                 }
-            }
-            function cong() {
-                var lastChar = document.getElementById('number').value.slice(-1);
-                var currentStr = document.getElementById('number').value;
-                kiemtrapheptoan(currentStr, lastChar, '+');
-            }
-            function tru() {
-                var lastChar = document.getElementById('number').value.slice(-1);
-                var currentStr = document.getElementById('number').value;
-                kiemtrapheptoan(currentStr, lastChar, '-');
-            }
-            function nhan() {
-                var lastChar = document.getElementById('number').value.slice(-1);
-                var currentStr = document.getElementById('number').value;
-                kiemtrapheptoan(currentStr, lastChar, '*');
-            }
-            function chia() {
-                var lastChar = document.getElementById('number').value.slice(-1);
-                var currentStr = document.getElementById('number').value;
-                kiemtrapheptoan(currentStr, lastChar, '/');
-            }
-            function changetheme() {
-                arr = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
-                $('#myform').css("background",'url("images/arr[Math.floor[]")');
-            }
-            function binhphuong() {
-                x = document.getElementById('number').value;
-                x = Math.pow(x, 2);
-                document.getElementById('number').value = x;
-            }
-            function sodoi() {
-                x = document.getElementById('number').value;
-                x = -x;
-                document.getElementById('number').value = x;
-            }
-            function doiso() {
-                x = document.getElementById('number').value;
-                x = 1 / x;
-                document.getElementById('number').value = x;
-            }
-            function canbachai() {
-                x = document.getElementById('number').value;
-                x = Math.sqrt(x);
-                document.getElementById('number').value = x;
-            }
-            function daucham() {
-                var lastChar = document.getElementById('number').value.slice(-1);
-                var currentStr = document.getElementById('number').value;
-                kiemtrapheptoan(currentStr, lastChar, '.');
-            }
-            function reset() {
-                document.getElementById("myform").reset();
-            }
-            function dapso() {
-                x = document.getElementById('number').value;
-                x = eval(x);
-                document.getElementById('number').value = x;
-                var lastChar = document.getElementById('number').value.slice(-1);
-                if (!isNaN(lastChar)) {
-                    var x = eval(document.getElementById('number').value);
-                    document.getElementById('number').value = x;
+            });
+
+            $('.cong').click(function () {
+                kiemtrapheptoan('+');
+            });
+
+            $('.tru').click(function () {
+                kiemtrapheptoan('-');
+            });
+
+            $('.nhan').click(function () {
+                kiemtrapheptoan('*');
+            });
+
+            $('.chia').click(function () {
+                kiemtrapheptoan('/');
+            });
+
+            $('.changetheme').click(function () {
+                arr = ['1.jpg', '2.jpg', '4.jpg'];
+                $('#myform').css("background", 'url("images/' + arr[ Math.floor(Math.random() * arr.length) ] + '")');
+            });
+
+            $('.binhphuong').click(function () {
+                $('#number').val($('#number').val() * $('#number').val());
+            });
+
+            $('.sodoi').click(function () {
+                $('#number').val($('#number').val() * -1);
+            });
+
+            $('.doiso').click(function () {
+                $('#number').val(1 / $('#number').val());
+            });
+
+            $('.canbachai').click(function () {
+                $('#number').val(Math.sqrt($('#number').val()));
+            });
+
+            $('.daucham').click(function () {
+                kiemtrapheptoan('.');
+            });
+
+            $('.reset').click(function () {
+                $('#number').val('');
+            });
+
+            $('.dapso').click(function () {
+                var kt = $('#number').val().slice(-1);
+                if (!isNaN(kt)) {
+                    $('#number').val(eval($('#number').val()));
                 } else {
                     alert('Đây không phải là phép toán');
                 }
-            }
+            });
 
-            function kiemtrapheptoan(str, kt, replace) {
+            function kiemtrapheptoan(replace) {
+
+                var kt = $('#number').val().slice(-1);
+                var str = $('#number').val().value;
+
                 if (str == '') {
-                    document.getElementById('number').value = replace;
-                    str = document.getElementById('number').value;
+                    $('#number').val(replace);
+                    str = $('#number').val();
                     if (str == '/' || str == '*') {
-                        document.getElementById('number').value = '0' + str;
+                        $('#number').val('0' + str);
                     }
                 } else {
                     if (kt == '-' || kt == '+' || kt == '*' || kt == '/' || kt == '^2' || kt == '.') {
-                        document.getElementById('number').value = document.getElementById('number').value.slice(0, -1);
+                        $('#number').val($('#number').val().slice(0, -1));
                     }
 
-                    document.getElementById('number').value += replace;
+                    $('#number').val($('#number').val() + replace);
                 }
 
 
@@ -167,3 +170,4 @@
         </script>
     </body>
 </html>
+
