@@ -102,12 +102,8 @@
                 kiemtrapheptoan(currentStr, lastChar, '/');
             }
             function changetheme() {
-                var img1 = 'url(images/1.jpg)';
-                var img2 = 'url(images/2.jpg)';
-                var img3 = 'url(images/3.jpg)';
-                var img4 = 'url(images/4.jpg)';
-                arr = [img1, img2, img3, img4];
-                document.body.style.background = arr[ Math.floor(Math.random() * arr.length) ] + 'no-repeat';
+                arr = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
+                $('#myform').css("background",'url("images/arr[Math.floor[]")');
             }
             function binhphuong() {
                 x = document.getElementById('number').value;
