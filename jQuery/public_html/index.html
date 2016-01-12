@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <form id="myform">
+            <input type="text" value="" size="20" id="number"/>
+            <br/><br/>
+            <button type="button" onclick='phantram()' id="number">%</button>
+            <button type="button" onclick='canbachai()' id="number">&radic;</button>
+            <button type="button" onclick='binhphuong()' id="number">x<sup>2</sup></button>
+            <button type="button" onclick='doiso()' id="number"><sup>1</sup>/<sub>x</sub></button>
+            <br/><br/>
+            <button type="button" onclick='number7()' id="number">7</button>
+            <button type="button" onclick='number8()' id="number">8</button>
+            <button type="button" onclick='number9()' id="number">9</button>
+            <button type="button" onclick='chia()' id="number">/</button>
+            <br/><br/>
+            <button type="button" onclick='number4()' id="number">4</button>
+            <button type="button" onclick='number5()' id="number">5</button>
+            <button type="button" onclick='number6()' id="number">6</button>
+            <button type="button" onclick='nhan()' id="number">*</button>
+            <br/><br/>
+            <button type="button" onclick='number1()' id="number">1</button>
+            <button type="button" onclick='number2()' id="number">2</button>
+            <button type="button" onclick='number3()' id="number">3</button>
+            <button type="button" onclick='tru()' id="number">-</button>
+            <br/><br/>
+            <button type="button" onclick='sodoi()' id="number">&plusmn;</button>
+            <button type="button" onclick='number0()' id="number">0</button>
+            <button type="button" onclick='daucham()' id="number">.</button>
+            <button type="button" onclick='cong()' id="number">+</button>
+            <br/><br/>
+            <button type="button" onclick='reset()' id="number">C</button>
+            <button class="zero" type="button" onclick='dapso()' id="number">=</button>
+            <br/><br/>
+            <button type="button" onclick='changetheme()' id="number">Change theme</button>
+        </form>
+        <script>
+
+            function number1() {
+                document.getElementById('number').value += '1';
+            }
+            function number2() {
+                document.getElementById('number').value += '2';
+            }
+            function number3() {
+                document.getElementById('number').value += '3';
+            }
+            function number4() {
+                document.getElementById('number').value += '4';
+            }
+            function number5() {
+                document.getElementById('number').value += '5';
+            }
+            function number6() {
+                document.getElementById('number').value += '6';
+            }
+            function number7() {
+                document.getElementById('number').value += '7';
+            }
+            function number8() {
+                document.getElementById('number').value += '8';
+            }
+            function number9() {
+                document.getElementById('number').value += '9';
+            }
+            function number0() {
+                document.getElementById('number').value += '0';
+            }
+            function phantram() {
+                var str = document.getElementById('number').value;
+                if (!isNaN(str)) {
+                    var x = eval(str / 100);
+                    document.getElementById('number').value = x;
+                } else {
+                    alert('Đây không phải là số');
+                }
+            }
+            function cong() {
+                var lastChar = document.getElementById('number').value.slice(-1);
+                var currentStr = document.getElementById('number').value;
+                kiemtrapheptoan(currentStr, lastChar, '+');
+            }
+            function tru() {
+                var lastChar = document.getElementById('number').value.slice(-1);
+                var currentStr = document.getElementById('number').value;
+                kiemtrapheptoan(currentStr, lastChar, '-');
+            }
+            function nhan() {
+                var lastChar = document.getElementById('number').value.slice(-1);
+                var currentStr = document.getElementById('number').value;
+                kiemtrapheptoan(currentStr, lastChar, '*');
+            }
+            function chia() {
+                var lastChar = document.getElementById('number').value.slice(-1);
+                var currentStr = document.getElementById('number').value;
+                kiemtrapheptoan(currentStr, lastChar, '/');
+            }
+            function changetheme() {
+                var img1 = 'url(images/1.jpg)';
+                var img2 = 'url(images/2.jpg)';
+                var img3 = 'url(images/3.jpg)';
+                var img4 = 'url(images/4.jpg)';
+                arr = [img1, img2, img3, img4];
+                document.body.style.background = arr[ Math.floor(Math.random() * arr.length) ] + 'no-repeat';
+            }
+            function binhphuong() {
+                x = document.getElementById('number').value;
+                x = Math.pow(x, 2);
+                document.getElementById('number').value = x;
+            }
+            function sodoi() {
+                x = document.getElementById('number').value;
+                x = -x;
+                document.getElementById('number').value = x;
+            }
+            function doiso() {
+                x = document.getElementById('number').value;
+                x = 1 / x;
+                document.getElementById('number').value = x;
+            }
+            function canbachai() {
+                x = document.getElementById('number').value;
+                x = Math.sqrt(x);
+                document.getElementById('number').value = x;
+            }
+            function daucham() {
+                var lastChar = document.getElementById('number').value.slice(-1);
+                var currentStr = document.getElementById('number').value;
+                kiemtrapheptoan(currentStr, lastChar, '.');
+            }
+            function reset() {
+                document.getElementById("myform").reset();
+            }
+            function dapso() {
+                x = document.getElementById('number').value;
+                x = eval(x);
+                document.getElementById('number').value = x;
+                var lastChar = document.getElementById('number').value.slice(-1);
+                if (!isNaN(lastChar)) {
+                    var x = eval(document.getElementById('number').value);
+                    document.getElementById('number').value = x;
+                } else {
+                    alert('Đây không phải là phép toán');
+                }
+            }
+
+            function kiemtrapheptoan(str, kt, replace) {
+                if (str == '') {
+                    document.getElementById('number').value = replace;
+                    str = document.getElementById('number').value;
+                    if (str == '/' || str == '*') {
+                        document.getElementById('number').value = '0' + str;
+                    }
+                } else {
+                    if (kt == '-' || kt == '+' || kt == '*' || kt == '/' || kt == '^2' || kt == '.') {
+                        document.getElementById('number').value = document.getElementById('number').value.slice(0, -1);
+                    }
+
+                    document.getElementById('number').value += replace;
+                }
+
+
+                return true;
+            }
+        </script>
+    </body>
+</html>

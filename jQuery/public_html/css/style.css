@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+}
+
+
+form {
+    background: #ccc none repeat scroll 0 0;
+    margin: 50px;
+    padding: 10px;
+    width: 610px;
+}
+
+input[type="text"] {
+    font-size: 20px;
+    height: 66px;
+    line-height: 66px;
+    width: 100%;
+}
+
+button {
+    border: medium none;
+    border-radius: 3px;
+    font-size: 20px;
+    height: 50px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    width: 24%;
+}
+
+button.zero {
+    background: #387cea none repeat scroll 0 0;
+    color: white;
+    width: 74%;
+}
+
+button:last-child {
+    background: red;
+    color: white;
+    width: 99%;
+}
